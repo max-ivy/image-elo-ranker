@@ -129,13 +129,13 @@ def home():
         image = form.image.data
         title = form.title.data
         filename = save_image(image)
-        print(f"Image saved: {filename}")  # Add this line
+        print(f"Image saved: {filename}")
         result = mongo.db["images-elo"].insert_one({
             'title': title,
             'filename': filename,
             'elo': 1000
         })
-        print(f"Image inserted with ID: {result.inserted_id}")  # Move this line inside the if block
+        print(f"Image inserted with ID: {result.inserted_id}")
 
     if filter_form.validate_on_submit():
         min_elo = int(filter_form.min_elo.data) if filter_form.min_elo.data else None
@@ -171,7 +171,7 @@ def upload_image():
             'filename': filename,
             'elo': 1000
         })
-        print(f"Image inserted with ID: {result.inserted_id}")  # Add this line
+        print(f"Image inserted with ID: {result.inserted_id}")
         image_url = url_for("static", filename=f"images/{filename}")
         return jsonify({"url": image_url, "filename": filename})
 
