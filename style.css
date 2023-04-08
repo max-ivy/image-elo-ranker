@@ -1,0 +1,36 @@
+.image-container {
+    height: 200px;
+    width: 100%;
+  }
+  
+  .image-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .comparison-image {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .comparison-image img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #comparison-container .col {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+  }
+  
+  #comparison-container .col img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+  }
+  

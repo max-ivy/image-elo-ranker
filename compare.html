@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Images</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+<div class="text-center mb-5">
+    <h1>Compare Images</h1>
+    <a href="{{ url_for('home') }}" class="btn btn-lg btn-success">Go Back</a>
+</div>
+        {% if img_a and img_b %}
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/' + img_a['filename']) }}" class="img-fluid">
+                <form action="{{ url_for('compare_images') }}" method="POST">
+                    <input type="hidden" name="winner" value="{{ img_a['_id']['$oid'] }}">
+                    <input type="hidden" name="loser" value="{{ img_b['_id']['$oid'] }}">
+                    <input type="submit" value="Select">
+                </form>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/' + img_b['filename']) }}" class="img-fluid">
+                <form action="{{ url_for('compare_images') }}" method="POST">
+                    <input type="hidden" name="winner" value="{{ img_a['_id']['$oid'] }}">
+                    <input type="hidden" name="loser" value="{{ img_b['_id']['$oid'] }}">
+                    <input type="submit" value="Select">
+
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <p>No images available to compare</p>
+        {% endif %}
+    </div>
+</body>
+</html>
