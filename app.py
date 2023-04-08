@@ -26,7 +26,6 @@ class YourImageUploadForm(FlaskForm):
 client = MongoClient('mongo_database')
 db = client['mydatabase']
 
-
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb:mongo_URI'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -38,7 +37,6 @@ db = SQLAlchemy(app)
 @app.template_filter('tojson')
 def tojson(obj):
     return json.dumps(obj)
-
 
 class ImageUploadForm(FlaskForm):
     title = StringField('Title', [validators.Length(min=1, max=100)])
@@ -120,7 +118,7 @@ def delete_image(image_id):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     print("Home route called")
-    form = YourImageUploadForm()  # Create the form instance
+    form = YourImageUploadForm()
     filter_form = FilterForm()
     min_elo = None
     max_elo = None
@@ -215,7 +213,6 @@ def update_elo(winner_elo, loser_elo, k=32):
     loser_new_elo = loser_elo + k * (0 - loser_expected)
 
     return winner_new_elo, loser_new_elo
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
