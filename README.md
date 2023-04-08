@@ -1,4 +1,4 @@
-# image-ranker
+# Image Elo Ranker
 This is a basic Flask project that allows users to upload images, view them on a homepage, and vote on which image they like better in a "compare" page. The app uses PyMongo to connect to a local MongoDB Compass database to store image metadata such as the image title and filename, as well as the Elo rating of each image. The Elo rating is updated based on user votes, with the winning image's rating increasing and the losing image's rating decreasing. The app also includes a filter feature to view images with Elo ratings within a specified range. This project demonstrates basic web development concepts such as handling form submissions, saving and retrieving data from a database, and using Flask to render templates and handle routing.
 
 Make sure to put the HTML in a "templates" folder, and the CSS + JS in a "static" folder. 
